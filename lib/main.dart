@@ -1,4 +1,5 @@
 import 'package:ap/screens/home_screen.dart';
+import 'package:ap/screens/mainHomescreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ap/models/Tarnsections.dart';
 import 'package:intl/intl.dart';
@@ -7,6 +8,7 @@ import 'providers/tarnsection_provider.dart';
 import 'package:ap/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 //แสดงผลแอพในตอนเริ่มต้น
 void main() {
@@ -39,7 +41,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -53,10 +54,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
+      //เพิ่มช่องเมนูด้านล่าง
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 111, 183, 241),
         body: TabBarView(
-          children: [HomeScreen(), FormScreen()],
+          children: [
+            mainHomescreen(),
+            HomeScreen(),
+          ], //ตําแหน่งใสหน้าข้อมูล
         ),
         bottomNavigationBar: TabBar(
           tabs: [
