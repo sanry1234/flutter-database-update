@@ -24,6 +24,8 @@ class FormScreen extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController amountController = TextEditingController(); //รับค่าเลข
 
+  get editingController => null; //กรอกข้อมูล
+
   // final dateController = TextEditingController(); //รับค่าเวลาวันที่
 
   @override

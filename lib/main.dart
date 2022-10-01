@@ -2,13 +2,9 @@ import 'package:ap/screens/home_screen.dart';
 import 'package:ap/screens/mainHomescreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ap/models/Tarnsections.dart';
-import 'package:intl/intl.dart';
-import 'package:path/path.dart';
 import 'providers/tarnsection_provider.dart';
-import 'package:ap/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 
 //แสดงผลแอพในตอนเริ่มต้น
 void main() {
@@ -58,10 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 111, 183, 241),
         body: TabBarView(
-          children: [
-            mainHomescreen(),
-            HomeScreen(),
-          ], //ตําแหน่งใสหน้าข้อมูล
+          children: [mainHomescreen(), HomeScreen()], //ตําแหน่งใสหน้าข้อมูล
         ),
         bottomNavigationBar: TabBar(
           tabs: [
@@ -76,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
           labelStyle: GoogleFonts.kanit(),
         ),
+        //เมนูบาร์ Tab
       ),
     );
 

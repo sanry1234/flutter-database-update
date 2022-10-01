@@ -23,14 +23,37 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("แอพของฉัน"),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.exit_to_app),
-              onPressed: () {
-                SystemNavigator.pop();
-              })
-        ],
+        elevation: 0.0,
+        leading: Container(),
+        title: Row(
+          children: [
+            Text(
+              'ข้อมูลผู้ป่วยของท่าน',
+              style: GoogleFonts.kanit(),
+            ),
+          ],
+        ),
+
+        centerTitle: true,
+
+        //หมวดค้นหา
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: Padding(
+            padding: const EdgeInsets.all(10.00),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: "ค้นหา",
+                hintText: "โปรดป้อนข้อมูลของท่าน",
+                labelStyle: GoogleFonts.kanit(),
+                hintStyle: GoogleFonts.kanit(),
+                border: InputBorder.none,
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
       body: Consumer(
         builder: (context, TarnsectionProvider provider, child) {
@@ -177,72 +200,21 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.all(8.0),
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.amber),
-              child: Text(
-                'ไปที่หน้าหลัก',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.kanit(),
-                strutStyle: StrutStyle(
-                  height: 0.5,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-              ),
-              title: Text(
-                'หน้าที่ 1 ',
-                style: GoogleFonts.kanit(),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.train,
-              ),
-              title: Text(
-                'หน้าที่ 2 ',
-                style: GoogleFonts.kanit(),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.train,
-              ),
-              title: Text(
-                'หน้าที่ 3 ',
-                style: GoogleFonts.kanit(),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.train,
-              ),
-              title: Text(
-                'หน้าที่ 4 ',
-                style: GoogleFonts.kanit(),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromARGB(255, 255, 254, 254),
+        child: Icon(
+          Icons.add,
         ),
+        onPressed: () async {
+          //ฟังค์ชั่นหน้าฟอร์ม
+          await Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => FormScreen()),
+            //สั่งย้ายไปที่ FormScreen
+          );
+        },
       ),
     );
   }
 }
+
+//ป่มค้นหา
